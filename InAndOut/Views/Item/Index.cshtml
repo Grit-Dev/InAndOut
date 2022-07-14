@@ -1,0 +1,62 @@
+﻿@model IEnumerable<InAndOut.Models.Item>
+
+<h1>Items</h1>
+
+
+<div class="Container p-3">
+    <div class="row-4"> 
+
+        <div class="col-6">
+            <h2 class="text-primary"> Borrowed Items List</h2>
+        </div>
+
+        <div class="col-6">
+      
+            @if (Model.Count() > 0)
+            {
+                <table>
+                    <thead>
+                        <tr>
+
+                           <th>
+                               Item Name
+                           </th>
+                           <th>
+                               Borrower
+                           </th>
+                           <th>
+                               Lender
+                           </th>
+                      
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @*every item in the model class of Item it will list through*@
+
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td width="30%"></td>
+                                <td width="30%">@item.Borrower</td>
+                                <td width="30%">@item.ID</td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+            }
+            else
+            {
+                @*If there is not items in the list, this will display and it is help me defend my code and troubleshoot my code*@
+                <p> No items created yet!</p>
+            }
+
+        </div>
+
+
+
+
+    </div>
+</div>
