@@ -8,5 +8,10 @@ namespace InAndOut.Controllers
         {
             return View();
         }
+
+        public IActionResult Details()
+        {
+            return Ok("Needs to be updated");
+        }
     }
 }
