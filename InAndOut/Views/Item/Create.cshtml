@@ -14,6 +14,10 @@
 
                 @*
                     Asp-for: Allows me to get the item name from my model 
+                    this helps not show hard coded values and string. 
+                    input tag: item name property
+
+                    form control class to make it look like a form 
 
                 *@
                 <label asp-for="Borrower" class="control-label"></label>
@@ -34,7 +38,7 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
 
-                @*Button added here to return back to the list view*@
+                @*Button added here to return back to the list view. Asp-controller does not needed but I want it in to be less confusing*@
                 <a asp-controller="Item" asp-action="Index" class="btn btn-danger">Back to List</a>
             </div>
         </form>

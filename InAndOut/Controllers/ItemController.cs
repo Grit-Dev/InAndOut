@@ -23,9 +23,22 @@ namespace InAndOut.Controllers
             return View(objList);
         }
 
+        //Get-Create: Get the Create View Page
         public IActionResult Create()
         {
             return View();
+        }
+
+        //Post-Create: Needed to send info filled in to be saved
+        [HttpPost]
+        [ValidateAntiForgeryToken] //Check if the user has a token and still logged in - I can add middleware later to apply this everywhere
+        public IActionResult Create(Item pItem)
+        {
+            _db.Items.Add(pItem); //Adds Obj to the Db 
+            _db.SaveChanges(); //Saves and updates the DB
+
+            return RedirectToAction("Item","Index");
+            
         }
     }
 }
