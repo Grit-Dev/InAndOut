@@ -18,7 +18,7 @@ namespace InAndOut.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Item> objList = _db.Items; 
+            IEnumerable<Item> objList = _db.Items;
 
             return View(objList);
         }
@@ -37,8 +37,28 @@ namespace InAndOut.Controllers
             _db.Items.Add(pItem); //Adds Obj to the Db 
             _db.SaveChanges(); //Saves and updates the DB
 
-            return RedirectToAction("Item","Index");
-            
+            return RedirectToAction("Item", "Index");
+
+        }
+
+        public IActionResult Details(Item pItem)
+        {
+          
+            //If check works - Find the ID and if the item check is null or cannot be found - Redirect 
+            var itemCheck = _db.Items.Find(pItem.ID);
+
+            if (itemCheck == null)
+            {
+                //Inform user the Id cannot be found within the Database = Use 
+                RedirectToAction("Index");
+            }
+
+            //Else Return the view
+
+            return View(itemCheck);
+
         }
     }
 }
+
+
