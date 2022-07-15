@@ -30,11 +30,12 @@
                 <input asp-for="ItemName" class="form-control" />
                 <span asp-validation-for="ItemName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
 
                 @*Button added here to return back to the list view*@
-                <a asp-controller="Item" asp-action="Index" class="btn btn-primary">Back to List</a>
+                <a asp-controller="Item" asp-action="Index" class="btn btn-danger">Back to List</a>
             </div>
         </form>
     </div>
