@@ -2,20 +2,8 @@
 
 namespace InAndOut.Migrations
 {
-    public partial class AddItemsTDB : Migration
+    public partial class addItemsToDB : Migration
     {
-
-        /// <summary>
-        /// This class was created using the entityframework core model. 
-        /// It has taken the model class item and has created an instance of it from the AppDbContrext  
-        ///
-        /// add-migration was used in the Package manager console(view > other windows > package manager console
-        /// Then gavbe it a meaning name "AddItemsTDB"
-        /// Then used update-databse to update to the actual db. 
-        /// 
-        /// </summary>
-        /// <param name="migrationBuilder"></param>
-        /// 
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -24,7 +12,9 @@ namespace InAndOut.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Borrower = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Borrower = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LenderName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ItemName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

@@ -28,6 +28,12 @@ namespace InAndOut.Migrations
                     b.Property<string>("Borrower")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ItemName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LenderName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
                     b.ToTable("Items");

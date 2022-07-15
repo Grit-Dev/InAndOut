@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InAndOut.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220714150319_AddItemsTDB")]
-    partial class AddItemsTDB
+    [Migration("20220715092241_addItemsToDB")]
+    partial class addItemsToDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,12 @@ namespace InAndOut.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Borrower")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ItemName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LenderName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
