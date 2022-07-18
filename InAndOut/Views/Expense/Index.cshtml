@@ -3,59 +3,71 @@
 
 <div class="Container p-3">
 
-    <div class="row pt-4"> 
+    <div class="row pt-4">
         <div class="col-6">
             <h2 class="text-primary"> Expense Items List</h2>
-        </div
-            
+        </div>
+
         <div class="col-6 text-right">
 
             @*Button to create a new item and to redirect to the view to great a new item*@
-          
+
             <a asp-controller="Expense" asp-action="Create" class="btn btn-primary">Create New Items</a>
-        
-        </div>  
-      
-            @if (Model.Count() > 0)
-            {
-                <table class="table table-striped">
-                    <thead>
+
+        </div>
+
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Expense Name
+                        </th>
+                        <th>
+                            Amount
+                        </th>
+                        <th>
+                            Options
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @*every item in the model class of Item it will list through*@
+
+                    @foreach (var item in Model)
+                    {
                         <tr>
+                            <td width="30%"></td>
+                            <td width="30%">@item.ExpenseName</td>
+                            <td width="30%">@item.Amount</td>
+                            <td width="40%">
+                                <div class="col-6 text-right">
 
-                           <th>
-                               
-                           </th>
-                           <th>
-                               Expense Name
-                           </th>
-                           <th>
-                               Amount
-                           </th>
-                      
+                                    @*Button to create a new item and to redirect to the view to great a new item
+                                      asp-route-Id: Helps us know which object we want to update or delete
+                                    *@
+
+                                    <a asp-controller="Expense" asp-action="Update" asp-route-Id="@item.ID" class="btn btn-primary">Update</a>
+                                    <a asp-controller="Expense" asp-action="Delte" asp-route-Id="@item.ID" class="btn btn-danger">Delete</a>
+
+                                </div>
+                            </td>
+
                         </tr>
-                    </thead>
-                    <tbody>
+                    }
 
-                        @*every item in the model class of Item it will list through*@
+                </tbody>
 
-                        @foreach(var item in Model)
-                        {
-                            <tr>
-                                <td width="30%"></td>
-                                <td width="30%">@item.ExpenseName</td>
-                                <td width="30%">@item.Amount</td>
-                            </tr>
-                        }
-
-                    </tbody>
-
-                </table>
-            }
-            else
-            {
-                @*If there is not items in the list, this will display and it is help me defend my code and troubleshoot my code*@
-                <p> No items created yet!</p>
-            }
+            </table>
+        }
+        else
+        {
+            @*If there is not items in the list, this will display and it is help me defend my code and troubleshoot my code*@
+            <p> No items created yet!</p>
+        }
 
     </div>
 </div>
