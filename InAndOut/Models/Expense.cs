@@ -8,8 +8,9 @@ namespace InAndOut.Models
         [Key] //Sets a primary key
         public int ID { get; set; }
 
-       /* [DisplayName("Expense")]
-        [Required]*/
+        /* [DisplayName("Expense")]
+         [Required]*/
+        [DisplayName("Expenses")]
         public string ExpenseName { get; set; }
        /* [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Amount must be greater than 0!")]*/
