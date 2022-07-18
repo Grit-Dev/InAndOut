@@ -1,0 +1,33 @@
+﻿@model InAndOut.Models.Expense
+
+
+
+
+<h4>Expense List</h4>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @*Strong used to highlight the Expense name in bold*@
+                <strong><label asp-for="ExpenseName" class="control-label"></label></strong>
+                <input asp-for="ExpenseName" class="form-control" />
+                <span asp-validation-for="ExpenseName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*Strong used to highlight the Amount in bold*@
+                <strong><label asp-for="Amount" class="control-label"></label></strong>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-controller="Expense" asp-action="Index" class="btn btn-danger">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
