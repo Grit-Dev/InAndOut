@@ -1,0 +1,61 @@
+﻿@model IEnumerable<InAndOut.Models.Expense>
+
+
+<div class="Container p-3">
+
+    <div class="row pt-4"> 
+        <div class="col-6">
+            <h2 class="text-primary"> Expense Items List</h2>
+        </div>
+            
+        <div class="col-6 text-right">
+
+            @*Button to create a new item and to redirect to the view to great a new item*@
+          
+            <a asp-controller="Item" asp-action="Create" class="btn btn-primary">Create New Items</a>
+        
+        </div>  
+      
+            @if (Model.Count() > 0)
+            {
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+
+                           <th>
+                               
+                           </th>
+                           <th>
+                               Expense Name
+                           </th>
+                           <th>
+                               Amount
+                           </th>
+                      
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @*every item in the model class of Item it will list through*@
+
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td width="30%"></td>
+                                <td width="30%">@item.ExpenseName</td>
+                                <td width="30%">@item.Amount</td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+            }
+            else
+            {
+                @*If there is not items in the list, this will display and it is help me defend my code and troubleshoot my code*@
+                <p> No items created yet!</p>
+            }
+
+    </div>
+</div>
