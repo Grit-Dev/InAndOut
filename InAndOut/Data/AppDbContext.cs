@@ -12,8 +12,11 @@ namespace InAndOut.Data
 
         }
 
-
+        //Table to be created using the model/Class
         public DbSet<Item> Items { get; set; }
+
+        //Table to be created using the model/Class
+        public DbSet<Expense> Expenses { get; set; }
 
         
     }
