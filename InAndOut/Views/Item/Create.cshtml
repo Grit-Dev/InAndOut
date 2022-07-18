@@ -19,18 +19,20 @@
 
                     form control class to make it look like a form 
 
+                    <strong></strong>  - Used to make Label of name in bold
+
                 *@
-                <label asp-for="Borrower" class="control-label"></label>
+                <strong><label asp-for="Borrower" class="control-label"></label></strong>
                 <input asp-for="Borrower" class="form-control" />
                 <span asp-validation-for="Borrower" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LenderName" class="control-label"></label>
+                <strong><label asp-for="LenderName" class="control-label"></label></strong>
                 <input asp-for="LenderName" class="form-control" />
                 <span asp-validation-for="LenderName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ItemName" class="control-label"></label>
+                <strong><label asp-for="ItemName" class="control-label"></label></strong>
                 <input asp-for="ItemName" class="form-control" />
                 <span asp-validation-for="ItemName" class="text-danger"></span>
             </div>
