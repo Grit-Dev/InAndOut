@@ -36,11 +36,17 @@ namespace InAndOut.Controllers
         [ValidateAntiForgeryToken] //Security token protection
         public IActionResult Create(Expense pExpenses)
         {
-            _db.Expenses.Add(pExpenses);
-            _db.SaveChanges();
+            //Check if something is valid or defined in Expense
+            if (ModelState.IsValid)
+            {
+                _db.Expenses.Add(pExpenses);
+                _db.SaveChanges();
 
-            //Once complete redirect the user to the Index(controller/Action)
-            return RedirectToAction("Index");
+                //Once complete redirect the user to the Index(controller/Action)
+                return RedirectToAction("Index");
+            }
+
+            return View(pExpenses);
             
         }
     }
