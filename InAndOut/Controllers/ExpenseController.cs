@@ -25,6 +25,14 @@ namespace InAndOut.Controllers
             //Pass the db Expenses Model Class, and return it to view
             IEnumerable<Expense> expenseList = _db.Expenses;
 
+            foreach (var obj in expenseList)
+            {
+                //for every obj in the obj list. set the expense type to be the first entry for that Id
+                //then give me the expense type
+                obj.ExpenseType = _db.ExpenseTypes.FirstOrDefault(u => u.ID == obj.ExpenseTypeId);
+                
+            }
+
             return View(expenseList);
         }
 
@@ -119,26 +127,39 @@ namespace InAndOut.Controllers
         // GET-Update
         public IActionResult Update(int? id)
         {
+            ExpenseVM expVM = new ExpenseVM()
+            {
+                Expense = new Expense(),
+                TypeDropDown = _db.ExpenseTypes.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.ID.ToString()
+                })
+            };
+
+
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var obj = _db.Expenses.Find(id);
-            if (obj == null)
+            
+            expVM.Expense = _db.Expenses.Find(id);
+
+            if (expVM.Expense == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            return View(expVM);
         }
 
         // POST-Update
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Expense obj)
+        public IActionResult Update(ExpenseVM obj)
         {
             if (ModelState.IsValid)
             {
-                _db.Expenses.Update(obj);
+                _db.Expenses.Update(obj.Expense);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }

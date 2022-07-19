@@ -28,6 +28,9 @@
                             Amount
                         </th>
                         <th>
+                            Expense Type
+                        </th>
+                        <th>
                             Options
                         </th>
 
@@ -41,9 +44,10 @@
                     {
                         <tr>
                            
-                            <td width="35%">@item.ExpenseName</td>
-                            <td width="35%">@item.Amount</td>
-                            <td width="30%">
+                            <td width="25%">@item.ExpenseName</td>
+                            <td width="25%">@item.Amount</td>
+                            <td width="25%">@item.ExpenseType.Name</td>
+                            <td width="25%">
                                 <div class="w-100 btn btn-group" role="group">
 
                                     @*Button to create a new item and to redirect to the view to great a new item
