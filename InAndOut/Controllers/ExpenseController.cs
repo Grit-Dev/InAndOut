@@ -63,7 +63,7 @@ namespace InAndOut.Controllers
 
         [HttpPost] //Post request for when use hits save
         [ValidateAntiForgeryToken] //Security token protection
-        public IActionResult Create(Expense pExpenses)
+        public IActionResult Create(ExpenseVM pExpenses)
         {
             //Check if something is valid or defined in Expense
             if (ModelState.IsValid)
@@ -72,7 +72,7 @@ namespace InAndOut.Controllers
                 //pExpenses.ExpenseTypeId = 1;
 
 
-                _db.Expenses.Add(pExpenses);
+                _db.Expenses.Add(pExpenses.Expense);
                 _db.SaveChanges();
 
                 //Once complete redirect the user to the Index(controller/Action)
