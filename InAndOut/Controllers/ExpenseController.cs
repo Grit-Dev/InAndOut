@@ -1,7 +1,10 @@
 ﻿using InAndOut.Data;
 using InAndOut.Models;
+using InAndOut.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace InAndOut.Controllers
 {
@@ -28,8 +31,33 @@ namespace InAndOut.Controllers
         //Get: Create View Page 
         public IActionResult Create()
         {
+            /*            //loosely typed - Not best practised 
+                        IEnumerable<SelectListItem> TypeDropDown = _db.ExpenseTypes.Select(i => new SelectListItem
+                        {
+                            Text = i.Name,
+                            Value = i.ID.ToString()
+                        });
+            */
+            //Storing IENUM of selectList Item names TypeDropdown from the DB, creating a new list
+            //and passing it to the view bag 
 
-            return View();
+
+            /* ViewBag.TypeDropDown = TypeDropDown;*/
+
+
+            //Strongly typed - Much better 
+            ExpenseVM expenseVM = new ExpenseVM()
+            {
+                Expense = new Expense(),
+                TypeDropDown = _db.ExpenseTypes.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.ID.ToString()
+                })
+
+            };
+
+            return View(expenseVM);
 
         }
 
@@ -40,6 +68,10 @@ namespace InAndOut.Controllers
             //Check if something is valid or defined in Expense
             if (ModelState.IsValid)
             {
+                //Do not do this in production - setting the ID - Good for testing
+                //pExpenses.ExpenseTypeId = 1;
+
+
                 _db.Expenses.Add(pExpenses);
                 _db.SaveChanges();
 

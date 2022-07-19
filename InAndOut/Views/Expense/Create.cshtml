@@ -1,4 +1,4 @@
-﻿@model InAndOut.Models.Expense
+﻿@model InAndOut.Models.ViewModels.ExpenseVM 
 
 
 
@@ -10,24 +10,42 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            
+
             @*Will make sure that error message will only display in the model we have defined specifically
-                This is optional but to keep in. Having a span is efficent enought
+            This is optional but to keep in. Having a span is efficent enought
 
             *@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 @*Strong used to highlight the Expense name in bold*@
-                <strong><label asp-for="ExpenseName" class="control-label"></label></strong>
-                <input asp-for="ExpenseName" class="form-control" />
+                <strong><label asp-for="Expense.ExpenseName" class="control-label"></label></strong>
+                <input asp-for="Expense.ExpenseName" class="form-control" />
                 @*Asp validation check *@
-                <span asp-validation-for="ExpenseName" class="text-danger"></span>
+                <span asp-validation-for="Expense.ExpenseName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 @*Strong used to highlight the Amount in bold*@
-                <strong><label asp-for="Amount" class="control-label"></label></strong>
-                <input asp-for="Amount" class="form-control" />
-                <span asp-validation-for="Amount" class="text-danger"></span>
+                <strong><label asp-for="Expense.Amount" class="control-label"></label></strong>
+                <input asp-for="Expense.Amount" class="form-control" />
+                <span asp-validation-for="Expense.Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*Strong used to highlight the Expense Type in bold*@
+                <strong><label asp-for="Expense.ExpenseType" class="control-label"></label></strong>
+
+                @*
+                    Select gived the option to choose from a list. In this case we use asp-items from the view bag to select
+                    the id, 
+                    Option gives the option to select what type with the naming convention 
+
+
+                *@
+                <Select asp-for="Expense.ExpenseTypeId" asp-items="@Model.TypeDropDown" class="form-control">
+
+                <option selected>-- Select Expense Type</option>
+
+                <span asp-validation-for="Expense.ExpenseTypeId" class="text-danger"></span>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -40,5 +58,7 @@
 
 @*Client side validation*@
 @section scripts{
-    @{<partial name ="_ValidationScriptsPartial" />}
-}
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }
