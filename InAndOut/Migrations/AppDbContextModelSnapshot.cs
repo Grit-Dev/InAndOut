@@ -33,7 +33,22 @@ namespace InAndOut.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Expense");
+                    b.ToTable("Expenses");
+                });
+
+            modelBuilder.Entity("InAndOut.Models.ExpenseType", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ExpenseTypes");
                 });
 
             modelBuilder.Entity("InAndOut.Models.Item", b =>

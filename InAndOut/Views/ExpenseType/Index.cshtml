@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<InAndOut.Models.ExpenseType>
 
-
 <div class="Container p-3">
 
     <div class="row pt-4">
@@ -22,13 +21,7 @@
                 <thead>
                     <tr>
                         <th>
-                            Must Haves 
-                        </th>
-                        <th>
-                            Nice To Have
-                        </th>
-                        <th>
-                            Not Needed
+                            Name  
                         </th>
                         <th>
                             Options
@@ -44,9 +37,7 @@
                     {
                         <tr>
                            
-                            <td width="35%">@item.MustHaves</td>
-                            <td width="35%">@item.NiceToHave</td>
-                            <td width="35%">@item.NotNeeded</td>
+                            <td width="35%">@item.Name</td>
                             <td width="30%">
                                 <div class="w-100 btn btn-group" role="group">
 

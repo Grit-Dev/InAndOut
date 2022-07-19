@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InAndOut.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220718093755_ExpensestoDB")]
-    partial class ExpensestoDB
+    [Migration("20220719091641_fixedAllTables")]
+    partial class fixedAllTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,6 +36,21 @@ namespace InAndOut.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Expenses");
+                });
+
+            modelBuilder.Entity("InAndOut.Models.ExpenseType", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ExpenseTypes");
                 });
 
             modelBuilder.Entity("InAndOut.Models.Item", b =>
