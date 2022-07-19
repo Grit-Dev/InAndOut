@@ -18,6 +18,9 @@ namespace InAndOut.Data
         //Table to be created using the model/Class
         public DbSet<Expense> Expenses { get; set; }
 
+        //Table to be created in the db for ExpenseType class
+        public DbSet<Expense> ExpenseTypes { get; set; }
+
         
     }
 }
