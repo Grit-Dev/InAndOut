@@ -5,9 +5,9 @@ namespace InAndOut.Controllers
 {
     public class ExpenseTypeController : Controller
     {
+        //Dependency injection
         private readonly AppDbContext _db; 
 
-        //Dependency injection
         public ExpenseTypeController(AppDbContext db)
         {
             _db = db;
