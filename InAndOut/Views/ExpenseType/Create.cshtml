@@ -1,0 +1,36 @@
+﻿@model InAndOut.Models.ExpenseType
+
+<h4>Create Expenses form</h4>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            
+            @*Will make sure that error message will only display in the model we have defined specifically
+                This is optional but to keep in. Having a span is efficent enought
+
+            *@
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                @*Strong used to highlight the Expense name in bold*@
+                <strong><label asp-for="Name" class="control-label"></label></strong>
+                <input asp-for="Name" class="form-control" />
+                @*Asp validation check *@
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-controller="Expense" asp-action="Index" class="btn btn-danger">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@*Client side validation*@
+@section scripts{
+    @{<partial name ="_ValidationScriptsPartial" />}
+}
